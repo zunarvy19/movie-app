@@ -2,12 +2,14 @@ import React, { useState } from "react";
 
 const Search = ({ onSearch }) => {
   const [input, setInput] = useState("");
+  const [lastSearch, setLastSearch] = useState(""); // State untuk menyimpan pencarian terakhir
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
       onSearch(input);
-      setInput("");
+      setLastSearch(input); // Simpan kata kunci pencarian terakhir
+      setInput(""); // Reset input field
     }
   };
 
@@ -28,7 +30,11 @@ const Search = ({ onSearch }) => {
           Search
         </button>
       </form>
-      <p>You searched for: </p>
+      {lastSearch && (
+        <p>
+          You searched for: <strong>{lastSearch}</strong>
+        </p>
+      )}
     </>
   );
 };
