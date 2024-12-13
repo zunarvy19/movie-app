@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 const Search = ({ onSearch }) => {
   const [input, setInput] = useState("");
-  const [lastSearch, setLastSearch] = useState(""); // State untuk menyimpan pencarian terakhir
+  const [lastSearch, setLastSearch] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim()) {
       onSearch(input);
-      setLastSearch(input); // Simpan kata kunci pencarian terakhir
-      setInput(""); // Reset input field
+      setLastSearch(input);
+      setInput("");
     }
   };
 
